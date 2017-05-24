@@ -22,8 +22,6 @@
   
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_ONEPAGE);
 
-//	var_dump($_SESSION);
-
   //if(isset($_REQUEST['gv_redeem_code']) && tep_not_null($_REQUEST['gv_redeem_code']) && $_REQUEST['gv_redeem_code'] == 'redeem code'){
   if(isset($_REQUEST['gv_redeem_code']) && tep_not_null($_REQUEST['gv_redeem_code'])){
     $_REQUEST['gv_redeem_code'] = '';

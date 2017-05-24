@@ -4,30 +4,33 @@
           <div class="row">
 						<div class="col-sm-4">
 							<?php include(DIR_WS_INCLUDES . 'checkout/checkout_cart.php'); ?>
-            </div>
-						<div class="col-sm-4">  
-              <?php  
-              
+                        </div>
+						<div class="col-sm-4">
+              <?php
+
+
+
                 // billing address
-                
+
                 ob_start();
-                include(DIR_WS_INCLUDES . 'checkout/billing_address.php'); 
+                include(DIR_WS_INCLUDES . 'checkout/billing_address.php');
                 $billingAddress_string = ob_get_contents();
                 ob_end_clean();
-    
-                echo $billingAddress_string;    
+
+                echo $billingAddress_string;
 
 								// shipping address
-								
+
                 ob_start();
-                include(DIR_WS_INCLUDES . 'checkout/shipping_address.php'); 
+                include(DIR_WS_INCLUDES . 'checkout/shipping_address.php');
                 $shippingAddress = ob_get_contents();
                 ob_end_clean();
-    
-                echo $shippingAddress;    
+
+                echo $shippingAddress;
+
               ?> 
             </div> 
-            <div class="col-sm-4 shippingMethods">  
+            <div class="col-sm-4 shippingMethods">
 				      <?php
 				        if ($onepage['shippingEnabled'] === true and tep_count_shipping_modules() > 0) {
 				      ?>
@@ -61,7 +64,8 @@
 									 
 					        <div class="form-group">
 					        	<?php echo tep_draw_textarea_field('comments', 'soft', '40', '3', $comments, 'class="checkout_inputs form-control" placeholder="'.ENTRY_COMMENT.'"'); ?>
-					        </div>  
+					        </div>
+
             </div> 
           </div>          
 
