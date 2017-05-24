@@ -1,0 +1,8 @@
+.env*
+.idea
+vendor
+bower_components
+node_modules
+includes/slow_queries/slow_query_log.txt
+logs
+tmp

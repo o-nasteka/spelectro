@@ -1,0 +1,34 @@
+ Volume in drive F is FAT32
+ Volume Serial Number is E0F9-83B6
+
+ Directory of F:\Web Dev\Loja MHR\OS Commerce 2.2 MS1\Tradu‡ao\catalog\includes\languages\portugues\images\buttons
+
+14-04-2003  15:00       <DIR>          .
+14-04-2003  15:00       <DIR>          ..
+03-06-2001  13:02                  774 button_address_book.gif
+24-05-2001  02:29                1.723 button_add_address.gif
+24-05-2001  00:19                1.408 button_back.gif
+04-06-2001  15:41                  547 button_buy_now.gif
+24-05-2001  01:44                1.866 button_change_address.gif
+24-05-2001  01:01                1.538 button_checkout.gif
+24-05-2001  02:29                1.659 button_confirm_order.gif
+24-05-2001  00:19                1.508 button_continue.gif
+23-04-2002  23:27                  952 button_continue_shopping.gif
+06-06-2001  12:25                  517 button_delete.gif
+03-06-2001  13:02                  691 button_edit_account.gif
+03-06-2001  13:02                  769 button_history.gif
+24-05-2001  00:19                1.530 button_in_cart.gif
+03-06-2002  15:04                  664 button_login.gif
+10-03-2002  02:32                  881 button_notifications.gif
+24-05-2001  00:19                  554 button_quick_find.gif
+10-03-2002  02:32                1.000 button_remove_notifications.gif
+24-05-2001  00:19                1.608 button_reviews.gif
+27-05-2002  15:27                  693 button_search.gif
+24-05-2001  01:44                1.872 button_shipping_options.gif
+26-05-2001  16:45                  121 button_tell_a_friend.gif
+10-03-2002  02:32                1.578 button_update.gif
+24-05-2001  01:01                1.578 button_update_cart.gif
+24-05-2001  12:52                1.694 button_write_review.gif
+14-04-2003  15:00                    0 images.txt
+              25 File(s)         27.725 bytes
+               2 Dir(s)   3.257.081.856 bytes free

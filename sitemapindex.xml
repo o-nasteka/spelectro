@@ -1,0 +1,11 @@
+<?xml-stylesheet type="text/xsl" href="gss.xsl"?>
+<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
+	<sitemap>
+		<loc>https://spainelectro.com/sitemapcategories.xml</loc>
+		<lastmod>2017-03-28</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://spainelectro.com/sitemapproducts.xml</loc>
+		<lastmod>2017-03-28</lastmod>
+	</sitemap>
+</sitemapindex>

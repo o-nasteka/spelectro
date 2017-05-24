@@ -1,0 +1,1 @@
+prod_id	vendor_name	price_incl_vat	price_excl_vat	stock	buy_url

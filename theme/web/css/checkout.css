@@ -1,0 +1,162 @@
+.checkout .form-control[disabled], .checkout .form-control[readonly], .checkout fieldset[disabled] .form-control {
+  cursor: default;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.checkout {
+  width: 100%;
+  display: inline-block;
+  margin: 12px 0 0 0;
+}
+
+.checkout .tab-pane {
+  padding:15px 0 0 0;
+}
+
+.checkout:hover {
+  text-decoration: none;
+}
+
+.checkout > span {
+  border-bottom: 1px dashed transparent;
+}
+
+.checkout:hover > span {
+  border-bottom: 1px dashed #777;
+}
+.checkout .required_icon, .checkout .error_icon, .checkout .success_icon {
+  position: absolute;
+  right: -20px;
+  top: 3px;
+}
+/* CHECKOUT */
+
+#checkoutButtonContainer {
+  padding: 20px 0;
+}
+.checkout .table>tbody>tr>td,
+.checkout .table>tbody>tr>th,
+.checkout .table>tfoot>tr>td,
+.checkout .table>tfoot>tr>th,
+.checkout .table>thead>tr>td,
+.checkout .table>thead>tr>th {
+  border-top:0;
+  padding: 3px 0;
+}
+.checkout_left {}
+.checkout_right {}
+.checkout_form_info {margin: 0 0;}
+.checkout_form_info td.left {
+
+}
+
+.checkout_userlogin_form {
+  margin-bottom: 20px;
+}
+.checkout .login_page_soc {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.login_page_soc h2 {
+  margin-top: 0;
+}
+.checkout_userlogin_form label {
+  width: 60px;
+  display: inline-block;
+
+}
+.login_page_soc {
+  background: #44ADEF;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+}
+.login_page_soc a {color: #fff;font-size: 16px;}
+.login_page_soc a:hover {text-decoration: underline;}
+
+.checkout__cart_item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.checkout_form h3 {
+  min-height:34px;
+}
+
+.checkout .form-group {
+  position: relative;
+  margin: 5px 0;
+}
+
+.checkout .checkout_inputs,
+.checkout .required_icon,
+.checkout .error_icon,
+.checkout .success_icon {}
+.checkout_b_section {}
+
+#ajaxMessages {display: none !important;}
+
+
+.orderTotals {text-align:center;}
+.orderTotals tr:last-child {font-size: 18px;}
+.orderTotals tr:last-child td:last-child {
+  color: #000;
+  font-size: 20px;
+}
+.orderTotals i {color:#aaa;}
+.checkout .form-control[disabled], .checkout .form-control[readonly], .checkout fieldset[disabled] .form-control {
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: none;
+
+}
+.checkout .checkout_inputs.success {
+  border-color: green;
+}
+
+.checkout .checkout_inputs {
+ /* width: 250px; */
+}
+
+.checkout .form-group .required {
+  width:100%;
+  max-width:100%;
+}
+
+.checkout button {
+  min-width: 250px;
+  height:35px;
+  border-radius:5px;
+}
+
+.checkout select {
+   -webkit-appearance: menulist;
+   -moz-appearance:    menulist;
+   appearance:         menulist;
+}
+
+.checkout .inputRequirement {
+  display:none;
+}
+
+.checkout .fixed-height {
+  height:36px;
+  overflow:hidden;
+}
+
+
+.checkout .required_icon, .checkout .error_icon, .checkout .success_icon {
+  position: absolute;
+  right: 13px;
+  top: 8px;
+}
+
+.checkout .required_icon {color:#777;}
+.checkout .error_icon {color:#f24c4c;}
+.checkout .success_icon {color:#54af28;}
+
