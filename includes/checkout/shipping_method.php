@@ -1,5 +1,5 @@
 <?php
-	echo '<h3>'.TABLE_HEADING_SHIPPING_METHOD.'</h3>';
+	echo '<h3><i class="fa fa-truck checkout-ico" aria-hidden="true"></i>'.TABLE_HEADING_SHIPPING_METHOD.'</h3>';
 	
   $quotes = $shipping_modules->quote();
   
@@ -52,8 +52,8 @@
 	    <div class="col-xs-9">
 				<div class="form-group">
           <?php echo tep_draw_radio_field('shipping', $radio_val, $checked,'id="radio_'.$radio_val.'"'); ?>
-          <label for="radio_<?php echo $radio_val;?>"><?php echo $quotes[$i]['module']; ?></label>
 					<?php if (isset($quotes[$i]['icon']) && tep_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?>
+          <label for="radio_<?php echo $radio_val;?>"><?php echo $quotes[$i]['module']; ?></label>
 				</div>
 			</div>
 			<div class="col-xs-3 text-right">

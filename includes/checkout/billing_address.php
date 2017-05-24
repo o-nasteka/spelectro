@@ -1,5 +1,5 @@
 <?php
-echo '<h3>' . TABLE_HEADING_BILLING_ADDRESS . '</h3>';
+echo '<h3><span class="glyphicon glyphicon-user checkout-ico" aria-hidden="true"></span>' . TABLE_HEADING_BILLING_ADDRESS . '</h3>';
 if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" class="btn btn-default abook">Dirección</a>';
 ?>
 <div id="billingAddress"><?php

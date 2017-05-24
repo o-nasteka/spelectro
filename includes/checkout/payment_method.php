@@ -1,5 +1,5 @@
 <?php
-	echo '<h3>'.TABLE_HEADING_PAYMENT_METHOD.'</h3>';
+	echo '<h3><span class="glyphicon glyphicon-shopping-cart checkout-ico"></span>'.TABLE_HEADING_PAYMENT_METHOD.'</h3>';
 
   $selection = $payment_modules->selection();
 

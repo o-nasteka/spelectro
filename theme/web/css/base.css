@@ -144,6 +144,7 @@
 
 .pagos div:hover, .moduleRowSelected {
 	background: #EBEBEB;
+	border: 1px solid #dcdcdc;
 }
 
 .pagos div span {

@@ -8,6 +8,8 @@
   width: 100%;
   display: inline-block;
   margin: 12px 0 0 0;
+  border: 1px solid #e8e8e8;
+  padding: 7px;
 }
 
 .checkout .tab-pane {
@@ -160,3 +162,6 @@
 .checkout .error_icon {color:#f24c4c;}
 .checkout .success_icon {color:#54af28;}
 
+.checkout-ico{
+  margin-right: 5px;
+}
