@@ -34,6 +34,15 @@
 
     tep_exit();
   }
+
+// Debug Function
+function debug($data)
+{
+  echo "<pre class='debug'>";
+  echo var_dump($data);
+  echo "</pre>";
+  return true;
+}
   
 ////
 // Redirect to another page or site
