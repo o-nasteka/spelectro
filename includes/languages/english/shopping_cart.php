@@ -13,6 +13,8 @@
 define('NAVBAR_TITLE', 'Cart Contents');
 define('HEADING_TITLE', 'What\'s In My Cart?');
 define('TABLE_HEADING_REMOVE', 'Remove');
+define('TABLE_HEADING_NAME', 'Name');
+define('TABLE_HEADING_IMAGE', 'Image');
 define('TABLE_HEADING_QUANTITY', 'Qty.');
 define('TABLE_HEADING_MODEL', 'Model');
 define('TABLE_HEADING_PRODUCTS', 'Product(s)');

@@ -12,13 +12,15 @@
 
 define('NAVBAR_TITLE', 'Contenido de la Cesta');
 define('HEADING_TITLE', 'Cesta de la Compra');
+define('TABLE_HEADING_NAME', 'Name');
+define('TABLE_HEADING_IMAGE', 'Image');
 define('TABLE_HEADING_REMOVE', 'Quitar');
 define('TABLE_HEADING_QUANTITY', 'Cantidad');
 define('TABLE_HEADING_MODEL', 'Modelo');
 define('TABLE_HEADING_PRODUCTS', 'Producto(s)');
 define('TABLE_HEADING_TOTAL', 'Total');
 define('TABLE_HEADING_IMAGEN', 'Imagen');
-define('TEXT_CART_EMPTY', 'Tu cesta de la compra está vacía!');
+define('TEXT_CART_EMPTY', 'Tu cesta de la compra estï¿½ vacï¿½a!');
 define('SUB_TITLE_SUB_TOTAL', 'Subtotal:');
 define('SUB_TITLE_TOTAL', 'Total:');
 

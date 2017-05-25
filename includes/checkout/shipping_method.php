@@ -2,7 +2,7 @@
 	echo '<h3><i class="fa fa-truck checkout-ico" aria-hidden="true"></i>'.TABLE_HEADING_SHIPPING_METHOD.'</h3>';
 	
   $quotes = $shipping_modules->quote();
-  
+
   if ( !tep_session_is_registered('shipping') || ( tep_session_is_registered('shipping') && ($shipping == false) && (tep_count_shipping_modules() > 1) ) ){
 	  if (tep_session_is_registered('shipping')) tep_session_unregister('shipping');
 	  tep_session_register('shipping');

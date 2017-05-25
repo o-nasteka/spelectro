@@ -162,6 +162,51 @@
 .checkout .error_icon {color:#f24c4c;}
 .checkout .success_icon {color:#54af28;}
 
+/* New Checkout 24.05.2017 */
 .checkout-ico{
   margin-right: 5px;
 }
+.checkout-cart-title{
+  border: 1px solid #ebebeb;
+  padding: 7px 0 0 10px;
+  background-color: #f6f6f6;
+}
+
+#cartContent-page .product_delete .btn {
+  font-size: 14px;
+  padding: 0 0 0 2px;
+  border-radius: 20px;
+  min-width: 25px !important;
+  width: 25px;
+  min-height: 25px;
+  height: 25px;
+
+}
+#cartContent-page td.product_qty input {width: 30px;text-align: center;}
+#cartContent-page .btn.ok {
+  display:none;
+  position:absolute;
+  color:#49B3F6;
+  font-size:19px;
+  margin-top:-10px;
+  margin-left: -5px;
+}
+.sm_popup_cart{
+  display: none !important;
+}
+.check-isregistred{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background-color: #428bca;
+  color: #ffffff;
+  padding: 5px 15px;
+  font-weight: 600;
+}
+.checkout-panel .nav-tabs > li > a{
+  font-size: 12px;
+}
+.payment-img{
+  margin-left: 5px;
+}
+/* New Checkout End */

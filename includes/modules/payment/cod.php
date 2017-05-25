@@ -22,6 +22,8 @@
       $this->description = MODULE_PAYMENT_COD_TEXT_DESCRIPTION;
       $this->sort_order = MODULE_PAYMENT_COD_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_COD_STATUS == 'True') ? true : false);
+      $this->icon = 'receipt.png';
+      $this->icon = DIR_WS_ICONS . 'receipt.png';
 
       if ((int)MODULE_PAYMENT_COD_ORDER_STATUS_ID > 0) {
         $this->order_status = MODULE_PAYMENT_COD_ORDER_STATUS_ID;
@@ -64,10 +66,14 @@
       return false;
     }
 
-    function selection() {
-      return array('id' => $this->code,
-                   'module' => $this->title);
-    }
+  function selection() {
+    $this->icon = tep_image($this->icon, $this->title, '80', '40', 'class="payment-img"');
+    return array(
+        'id' => $this->code,
+        'module' => $this->title,
+        'icon' => $this->icon
+    );
+  }
 
     function pre_confirmation_check() {
       return false;

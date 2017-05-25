@@ -688,15 +688,15 @@ var checkout = {
                 errMsg += checkoutClass.error_err_bil+ "\n";
             }
 
-            if ($('#diffShipping:checked').length > 0){
-                if ($('.required_icon:visible', $('#shippingAddress')).length > 0){
-                    errMsg += checkoutClass.error_req_ship+ "\n";
-                }
-
-                if ($('.error_icon:visible', $('#shippingAddress')).length > 0){
-                    errMsg += checkoutClass.error_err_ship + "\n";
-                }
-            }
+            //if ($('#diffShipping:checked').length > 0){
+            //    if ($('.required_icon:visible', $('#shippingAddress')).length > 0){
+            //        errMsg += checkoutClass.error_req_ship+ "\n";
+            //    }
+            //
+            //    if ($('.error_icon:visible', $('#shippingAddress')).length > 0){
+            //        errMsg += checkoutClass.error_err_ship + "\n";
+            //    }
+            //}
 
             if (errMsg != ''){
                 errMsg = '------------------------------------------------' + "\n" +
@@ -767,22 +767,22 @@ var checkout = {
         var shippingInfoChanged = false;
         }*/
           
-    		$('#diffShipping').click(function (){
-    			if (this.checked){
-    				$('#shippingAddress').slideDown();
-    	//			$('#shippingMethods').html('');
-    				$('#noShippingAddress').show();
-    				$('select[name="shipping_country"]').trigger('change');
-    			}else{
-    				$('#shippingAddress').slideUp();
-    				var errCheck = checkoutClass.processShippingAddress();
-    				if (errCheck == ''){
-    					$('#noShippingAddress').hide();
-    				}else{
-    					$('#noShippingAddress').show();
-    				}
-    			}
-    		});
+    	//	$('#diffShipping').click(function (){
+    	//		if (this.checked){
+    	//			$('#shippingAddress').slideDown();
+    	////			$('#shippingMethods').html('');
+    	//			$('#noShippingAddress').show();
+    	//			$('select[name="shipping_country"]').trigger('change');
+    	//		}else{
+    	//			$('#shippingAddress').slideUp();
+    	//			var errCheck = checkoutClass.processShippingAddress();
+    	//			if (errCheck == ''){
+    	//				$('#noShippingAddress').hide();
+    	//			}else{
+    	//				$('#noShippingAddress').show();
+    	//			}
+    	//		}
+    	//	});
         
         if(this.autoshow == true &&  this.loggedIn == false){
             $('#shippingAddress').hide();
@@ -878,7 +878,6 @@ var checkout = {
                 }
             }
         });
-
 
         
 		$('input[name="billing_email_address"]').each(function (){
@@ -998,5 +997,42 @@ var checkout = {
         this.initializing = false;
         
         
-    }  
-}                      
+    }
+}
+
+
+// Update QTY product checkout.php
+$('body').on('click', '.ok', function(event) {
+
+    console.log('ok');
+
+    var url = 'includes/checkout/checkout_cart.php?action=update_product';
+
+    event.preventDefault();
+
+    senddata = $('#cart-item :input').serialize();
+
+
+    $.post(url,senddata, function(data) {
+        $('#cart-item').html(data);
+    });
+});
+
+
+// DELETE QTY product checkout.php
+$('body').on('click', '.delete', function(event) {
+
+    console.log('delete');
+
+    $("#cart_delete" + jQuery(this).val()).attr('checked', 'checked');
+
+    var url = 'includes/checkout/checkout_cart.php?action=update_product';
+    event.preventDefault();
+
+    senddata = $('#cart-item :input').serialize();
+
+
+    $.post(url,senddata, function(data) {
+        $('#cart-item').html(data);
+    });
+});

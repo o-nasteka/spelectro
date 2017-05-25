@@ -143,8 +143,11 @@
 }
 
 .pagos div:hover, .moduleRowSelected {
-	background: #EBEBEB;
-	border: 1px solid #dcdcdc;
+	background: #f6f6f6;
+	border: 1px solid #ebebeb;
+	min-height: 54px;
+	/*margin-top: 10px;*/
+	/*margin-bottom: 10px;*/
 }
 
 .pagos div span {

@@ -1,5 +1,5 @@
 <?php
-	echo '<h3><span class="glyphicon glyphicon-shopping-cart checkout-ico"></span>'.TABLE_HEADING_PAYMENT_METHOD.'</h3>';
+	echo '<h3><span class="glyphicon glyphicon-credit-card checkout-ico"></span>'.TABLE_HEADING_PAYMENT_METHOD.'</h3>';
 
   $selection = $payment_modules->selection();
 
@@ -22,7 +22,9 @@
 	</div>
 <?php
   }
-?> 
+?>
+
+<?php //debug($selection); ?>
 
 <?php
   for ($i=0, $n=sizeof($selection); $i<$n; $i++) {
@@ -33,6 +35,7 @@
 	    	<?php
 			     if (sizeof($selection) > 1) {
 			       echo tep_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $paymentMethod ? true : ($i=='0' ? true : false)),'id="radio_'.$selection[$i]['id'].'"');
+					if (isset($selection[$i]['icon']) && tep_not_null($selection[$i]['icon'])) { echo $selection[$i]['icon']; }
 			     } else {
 			       echo tep_draw_hidden_field('payment', $selection[$i]['id'],true,'id="radio_'.$selection[$i]['id'].'"');
 			     }

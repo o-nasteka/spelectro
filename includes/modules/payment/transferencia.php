@@ -29,6 +29,8 @@
 							MODULE_PAYMENT_TRANSFERENCIA_TITULAR . "\n" .
 							"<strong>Banco:</strong> " . MODULE_PAYMENT_TRANSFERENCIA_BANCO . "\n" .
 							"<strong>Número de Cuenta:</strong> " . MODULE_PAYMENT_TRANSFERENCIA_CC . "\n\n";
+      $this->icon = 'bank.png';
+      $this->icon = DIR_WS_ICONS . 'bank.png';
       $this->sort_order = MODULE_PAYMENT_TRANSFERENCIA_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_TRANSFERENCIA_STATUS == 'True') ? true : false);
 
@@ -67,8 +69,12 @@
     }
 
     function selection() {
-      return array('id' => $this->code,
-                   'module' => $this->title);
+      $this->icon = tep_image($this->icon, $this->title, '80', '40', 'class="payment-img"');
+      return array(
+          'id' => $this->code,
+          'module' => $this->title,
+          'icon' => $this->icon
+      );
     }
 
     function pre_confirmation_check() {

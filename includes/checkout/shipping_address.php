@@ -3,7 +3,7 @@
 
 <div id="shippingAddress">
 <?php
-	echo '<h3>'.TABLE_HEADING_SHIPPING_ADDRESS.'</h3>';
+	echo '<h3><i class="fa fa-truck" aria-hidden="true"></i>'.TABLE_HEADING_SHIPPING_ADDRESS.'</h3>';
 
  if (tep_session_is_registered('customer_id') && ONEPAGE_CHECKOUT_SHOW_ADDRESS_INPUT_FIELDS == 'False'){
 	 if((int)$sendto<1)	 	$sendto = $billto;
