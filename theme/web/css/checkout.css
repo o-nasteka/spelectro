@@ -165,6 +165,7 @@
 /* New Checkout 24.05.2017 */
 .checkout-ico{
   margin-right: 5px;
+  font-size:20px;
 }
 .checkout-cart-title{
   border: 1px solid #ebebeb;
@@ -175,6 +176,7 @@
 #cartContent-page .product_delete .btn {
   font-size: 14px;
   padding: 0 0 0 2px;
+  margin-left: 10px;
   border-radius: 20px;
   min-width: 25px !important;
   width: 25px;
@@ -208,5 +210,9 @@
 }
 .payment-img{
   margin-left: 5px;
+}
+.total-text{
+  float: right;
+  padding-right: 5px;
 }
 /* New Checkout End */

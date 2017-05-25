@@ -140,14 +140,15 @@ if (MODULE_ORDER_TOTAL_COUPON_STATUS == 'true'){
   ?>
   <!-- MAIN TABLE -->
   <div class="table-responsive">
-    <table id="cartContent-page">
+    <table id="cartContent-page" width="100%">
       <thead>
 
       <th><?php echo TABLE_HEADING_IMAGE; ?></th>
       <th class="name"><?php echo TABLE_HEADING_NAME; ?></th>
-      <th class="numeric"><?php echo TABLE_HEADING_TOTAL; ?></th>
+      <th class="numeric"><?php echo TABLE_HEADING_PRICE; ?></th>
       <th class="numeric"><?php echo TABLE_HEADING_QUANTITY; ?></th>
-      <th class="numeric" colspan="2"><?php echo TABLE_HEADING_TOTAL; ?></th>
+      <th class="numeric"><?php echo TABLE_HEADING_REMOVE; ?></th>
+      <th class="numeric chechout-total" colspan="2"><?php echo TABLE_HEADING_TOTAL; ?></th>
       </thead>
       <tbody>
         <?php
@@ -159,8 +160,8 @@ if (MODULE_ORDER_TOTAL_COUPON_STATUS == 'true'){
               <td class="product_name" ><?php echo $value['name'] ?> </td>
               <td class="product_price" ><?php echo $value['price'] ?></td>
               <td class="product_qty" ><?php echo $value['qty'] ?></td>
-              <td class="product_total" ><?php echo $value['price_full'] ?></td>
               <td class="product_delete"><?php echo $value['delete'] ?></td>
+              <td class="product_total" ><?php echo $value['price_full'] ?></td>
             </tr>
         <?php endforeach; ?>
       </tbody>

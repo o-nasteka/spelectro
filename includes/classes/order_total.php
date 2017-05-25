@@ -93,8 +93,8 @@
             $size = sizeof($GLOBALS[$class]->output);
             for ($i=0; $i<$size; $i++) {
               $output_string .= '              <tr>' . "\n" .
-                                '                <td align="right" class="main">' . $GLOBALS[$class]->output[$i]['title'] . '</td>' . "\n" .
-                                '                <td align="right" class="main">' . $GLOBALS[$class]->output[$i]['text'] . '</td>' . "\n" .
+                                '                <td align="left" class=" main"><strong>' . $GLOBALS[$class]->output[$i]['title'] . '</strong></td>' . "\n" .
+                                '                <td align="right" class="main"><strong class="total-text">' . $GLOBALS[$class]->output[$i]['text'] . '</strong></td>' . "\n" .
                                 '              </tr>';
             }
           }

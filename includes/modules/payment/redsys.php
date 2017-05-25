@@ -44,6 +44,8 @@ class redsys {
       $this->sort_order = MODULE_PAYMENT_REDSYS_SORT_ORDER;
       $this->mantener_pedido_ante_error_pago = ((MODULE_PAYMENT_REDSYS_ERROR_PAGO == 'si') ? true : false);
       $this->logActivo = MODULE_PAYMENT_REDSYS_LOG;
+		$this->icon = 'card.png';
+		$this->icon = DIR_WS_ICONS . 'card.png';
 
       if ((int)MODULE_PAYMENT_REDSYS_ORDER_STATUS_ID > 0) {
         $this->order_status = MODULE_PAYMENT_REDSYS_ORDER_STATUS_ID;
@@ -90,10 +92,14 @@ class redsys {
       return false;
     }
 
-    function selection() {
-      return array('id' => $this->code,
-                   'module' => $this->title);
-    }
+	function selection() {
+		$this->icon = tep_image($this->icon, $this->title, '80', '40', 'class="payment-img"');
+		return array(
+				'id' => $this->code,
+				'module' => $this->title,
+				'icon' => $this->icon
+		);
+	}
 
      function pre_confirmation_check() {
       global $cartID, $cart;

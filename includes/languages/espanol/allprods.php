@@ -19,6 +19,7 @@ define('TABLE_HEADING_IMAGE', '');
 define('TABLE_HEADING_MODEL', 'Modelo');
 define('TABLE_HEADING_PRODUCTS', 'Productos');
 define('TABLE_HEADING_MANUFACTURER', 'Fabricante');
+define('TABLE_HEADING_DELETE', 'Delete');
 define('TABLE_HEADING_QUANTITY', 'Cantidad');
 define('TABLE_HEADING_PRICE', 'Precio');
 define('TABLE_HEADING_WEIGHT', 'Peso');
