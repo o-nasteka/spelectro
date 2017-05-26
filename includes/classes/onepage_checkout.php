@@ -860,9 +860,9 @@ $input_fields = array($inputFields);
 	function verifyContents(){
 		global $cart;
 		// if there is nothing in the customers cart, redirect them to the shopping cart page
-		if ($cart->count_contents() < 1) {
-			tep_redirect(tep_href_link(FILENAME_DEFAULT));
-		}
+//		if ($cart->count_contents() < 1) {
+//			tep_redirect(tep_href_link(FILENAME_DEFAULT));
+//		}
 	}
 
 	function checkStock(){

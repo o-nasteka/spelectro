@@ -10,23 +10,23 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL & ~E_NOTICE);
 
-  if (ONEPAGE_LOGIN_REQUIRED == 'true'){
-	  if (!tep_session_is_registered('customer_id')){
-		  tep_redirect(tep_href_link(FILENAME_LOGIN));
-	  }
-  }
+//  if (ONEPAGE_LOGIN_REQUIRED == 'true'){
+//	  if (!tep_session_is_registered('customer_id')){
+//		  tep_redirect(tep_href_link(FILENAME_LOGIN));
+//	  }
+//  }
 
   if (isset($_GET['rType'])){
 	  header('content-type: text/html; charset=utf-8');
   }
-  
+
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CHECKOUT_ONEPAGE);
 
   //if(isset($_REQUEST['gv_redeem_code']) && tep_not_null($_REQUEST['gv_redeem_code']) && $_REQUEST['gv_redeem_code'] == 'redeem code'){
   if(isset($_REQUEST['gv_redeem_code']) && tep_not_null($_REQUEST['gv_redeem_code'])){
     $_REQUEST['gv_redeem_code'] = '';
     $_POST['gv_redeem_code'] = '';
-  }  
+  }
 
 
   if(isset($_REQUEST['coupon']) && tep_not_null($_REQUEST['coupon']) && $_REQUEST['coupon'] == 'redeem code'){
@@ -35,11 +35,11 @@
   }
 
   require('includes/classes/onepage_checkout.php');
-  $onePageCheckout = new osC_onePageCheckout();    
-     
+  $onePageCheckout = new osC_onePageCheckout();
+
   if (!isset($_GET['rType']) && !isset($_GET['action']) && !isset($_POST['action']) && !isset($_GET['error_message']) && !isset($_GET['payment_error'])){
-	  $onePageCheckout->init();   
-  } 
+	  $onePageCheckout->init();
+  }
   //BOF KGT
   if (MODULE_ORDER_TOTAL_DISCOUNT_COUPON_STATUS == 'true'){
     if(isset($_POST['code']))
@@ -48,13 +48,13 @@
         tep_session_register('coupon');
       $coupon = $_POST['code'];
     }
-  }                     
-  //EOF KGT          
+  }
+  //EOF KGT
   require(DIR_WS_CLASSES . 'order.php');
   $order = new order;
-                       
+
   $onePageCheckout->loadSessionVars();
-                     
+
 //  print_r($order);
 // register a random ID in the session to check throughout the checkout procedure
 // against alterations in the shopping cart contents
@@ -75,9 +75,9 @@
   }else
   {
   	// if there is nothing in the customers cart, redirect them to the shopping cart page
-	if ($cart->count_contents() < 1) {
-		tep_redirect(tep_href_link(FILENAME_DEFAULT));
-	}
+//	if ($cart->count_contents() < 1) {
+//		tep_redirect(tep_href_link(FILENAME_DEFAULT));
+//	}
 
   }
 
@@ -98,13 +98,13 @@
   $payment_modules = new payment;
 
   require(DIR_WS_CLASSES . 'order_total.php');
-  $order_total_modules = new order_total;       
+  $order_total_modules = new order_total;
 
 
   $action = (isset($_POST['action']) ? $_POST['action'] : '');
   if (isset($_POST['updateQuantities_x'])){
 	  $action = 'updateQuantities';
-  }    
+  }
   if (isset($_GET['action']) && $_GET['action']=='process_confirm'){
 	  $action = 'process_confirm';
   }
@@ -184,9 +184,9 @@
 		  case 'getOrderTotals':
 			  if (MODULE_ORDER_TOTAL_INSTALLED){
 				  echo '<table cellpadding="2" cellspacing="0" border="0" width="100%">';
-		
+
 					$order_total_modules->process();
-	
+
 					echo  $order_total_modules->output();
 					echo '</table>';
 			  }
@@ -221,8 +221,8 @@
 			  include(DIR_WS_INCLUDES . 'checkout/shipping_address.php');
 		  break;
 	  }
-    
-    
+
+
 
 	  $content = ob_get_contents();
 	  ob_end_clean();
@@ -236,7 +236,7 @@
 
   function fixSeoLink($url){
 	  return str_replace('&amp;', '&', $url);
-  }   
+  }
 
 ?>
 
@@ -245,17 +245,17 @@
 
 		// Titulo
 		$sTitular = HEADING_TITLE;
-		
+
 		// Breadcrumb
 		$breadcrumb->add(NAVBAR_TITLE, tep_href_link(FILENAME_CHECKOUT_ONEPAGE ));
 
 		require(DIR_THEME. 'html/header.php');
-?>      
+?>
 <script type="text/javascript" language="javascript" src="includes/checkout/jquery.ajaxq-0.0.1.js"></script>
 <script type="text/javascript" language="javascript" src="includes/checkout/checkout.js"></script>
 
 <script language="javascript">
-                                    
+
   var onePage = checkout;
   onePage.initializing = true;
   onePage.ajaxCharset = 'utf-8';
@@ -266,14 +266,14 @@
   onePage.showAddressInFields = <?php echo ((ONEPAGE_CHECKOUT_SHOW_ADDRESS_INPUT_FIELDS == 'False') ? 'false' : 'true');?>;
   onePage.showMessagesPopUp = <?php echo ((ONEPAGE_CHECKOUT_LOADER_POPUP == 'True') ? 'true' : 'false');?>;
   onePage.ccgvInstalled = <?php echo (MODULE_ORDER_TOTAL_COUPON_STATUS == 'true' ? 'true' : 'false');?>;
-  
+
   onePage.refresh = '<?php echo CH_JS_REFRESH; ?>';
   onePage.refresh_method = '<?php echo CH_JS_REFRESH_METHOD; ?>';
   onePage.setting_method = '<?php echo CH_JS_SETTING_METHOD; ?>';
   onePage.setting_address = '<?php echo CH_JS_SETTING_ADDRESS; ?>';
   onePage.setting_address_ship = '<?php echo CH_JS_SETTING_ADDRESS_SHIP; ?>';
   onePage.setting_address_bil = '<?php echo CH_JS_SETTING_ADDRESS_BIL; ?>';
-  
+
   onePage.error_scart = '<?php echo CH_JS_ERROR_SCART; ?>';
   onePage.error_some1 = '<?php echo CH_JS_ERROR_SOME1; ?>';
   onePage.error_some2 = '<?php echo CH_JS_ERROR_SOME2; ?>';
@@ -287,8 +287,8 @@
   onePage.error_address = '<?php echo CH_JS_ERROR_ADDRESS; ?>';
   onePage.error_pmethod = '<?php echo CH_JS_ERROR_PMETHOD; ?>';
   onePage.error_select_pmethod = '<?php echo CH_JS_ERROR_SELECT_PMETHOD; ?>';
-  onePage.check_email = '<?php echo CH_JS_CHECK_EMAIL; ?>';      
-  onePage.error_email = '<?php echo CH_JS_ERROR_EMAIL; ?>';       
+  onePage.check_email = '<?php echo CH_JS_CHECK_EMAIL; ?>';
+  onePage.error_email = '<?php echo CH_JS_ERROR_EMAIL; ?>';
 
   //BOF KGT
   onePage.kgtInstalled = <?php echo (MODULE_ORDER_TOTAL_DISCOUNT_COUPON_STATUS == 'true' ? 'true' : 'false');?>;
@@ -300,7 +300,7 @@
 
   function getFieldErrorCheck($element){
 	  var rObj = {};
-	  switch($element.attr('name')){  
+	  switch($element.attr('name')){
 		  case 'billing_firstname':
 		  case 'shipping_firstname':
 			  rObj.minLength = <?php echo addslashes(ENTRY_FIRST_NAME_MIN_LENGTH);?>;
@@ -369,9 +369,9 @@ function clearRadeos(){
 	//	require(DIR_THEME. 'html/column_left.php');
 
     include( DIR_THEME. 'html/templates/checkout.php' );
-                       
+
 	//	include( DIR_THEME. 'html/column_right.php' );
 		include( DIR_THEME. 'html/footer.php' );
 		include( DIR_WS_INCLUDES . 'application_bottom.php' );
 
-?>    
+?>

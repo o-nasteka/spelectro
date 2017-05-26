@@ -94,8 +94,11 @@
               
               if(MIN_ORDER<$cart->show_total()){?>
               <div id="checkoutButtonContainer">
-                <span class="btn btn-default" id="checkoutButton" formUrl="<?php tep_href_link(FILENAME_CHECKOUT_PROCESS, '', $request_type); ?>" style="cursor: pointer"><?php echo IMAGE_BUTTON_CHECKOUT;?></span>
-                <input type="hidden" name="formUrl" id="formUrl" value="">
+                <span class="btn btn-default disabled" id="checkoutButton" formUrl="<?php tep_href_link(FILENAME_CHECKOUT_PROCESS, '', $request_type); ?>" style="cursor: pointer"><?php echo IMAGE_BUTTON_CHECKOUT;?></span>
+                <input type="hidden" name="formUrl" id="formUrl" value=""> <br>
+                <input type="checkbox" id="checkBtn" /> Acepto los términos de servicio.
+                <a href="#" data-toggle="modal" data-target="#rules-modal">(leer)</a>
+
               </div>
 
 
@@ -136,3 +139,41 @@
 
 </div>
 
+<!-- Login Modal is Already Registred -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h1>Login to Your Account</h1><br>
+      <form name="login" action="https://spainelectro.com/login.php?action=process" method="post">
+        <input type="email" name="email_address" placeholder="E-mail">
+        <input type="password" name="password" placeholder="Contraseña">
+        <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+        <input type="checkbox" name="remember_me" value="on"> Recordarme
+      </form>
+
+      <div class="login-help">
+        <a href="/create_account.php">Register</a> - <a href="/password_forgotten.php">Forgot Password</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login Modal is Already Registred END -->
+
+<!-- Rules Modal -->
+<div class="modal fade" id="rules-modal" tabindex="-1" role="dialog" aria-labelledby="RulesModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="RulesModalLabel">Condiciones Generales</h4>
+      </div>
+      <div class="modal-body">
+        <?php include_once('rules.php');?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Rules Modal END -->

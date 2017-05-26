@@ -2090,3 +2090,7 @@ body.showContactForm {
     top: 0;
     right: 0;
 }
+
+.sm_popup_cart{
+    /*display: none !important;*/
+}

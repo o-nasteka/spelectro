@@ -1,6 +1,6 @@
 <?php
 echo '<h3><span class="glyphicon glyphicon-user checkout-ico" aria-hidden="true"></span>' . TABLE_HEADING_BILLING_ADDRESS . '</h3>';
-if (!tep_session_is_registered('customer_id')) echo '<a href="/login.php" class="check-isregistred">Are you already registred?</a> ';
+if (!tep_session_is_registered('customer_id')) echo '<a href="#" data-toggle="modal" data-target="#login-modal" class="check-isregistred">Are you already registred?</a> ';
 if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" class="btn btn-default abook">Dirección</a>';
 ?>
 <div id="billingAddress"><?php
@@ -23,12 +23,17 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
         if (tep_session_is_registered('onepage')) {
             $billingAddress = $onepage['billing'];
             $customerAddress = $onepage['customer'];
-        } 
-
-          echo '<div class="form-group">'.tep_draw_input_field('billing_firstname', (isset($billingAddress) ? $billingAddress['firstname'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_FIRST_NAME . '"').'</div>';
-          echo '<div class="form-group">'.tep_draw_input_field('billing_lastname', (isset($billingAddress) ? $billingAddress['lastname'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_LAST_NAME . '"').'</div>';
+        }
+            echo '<div class="check-bl">';
+              echo '<div class="form-group check-name">'.
+                  tep_draw_input_field('billing_firstname', (isset($billingAddress) ? $billingAddress['firstname'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_FIRST_NAME . '"')
+                  .'</div>';
+              echo '<div class="form-group check-name2">'.
+                  tep_draw_input_field('billing_lastname', (isset($billingAddress) ? $billingAddress['lastname'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_LAST_NAME . '"')
+                  .'</div>';
+            echo '</div>';
         if(!tep_session_is_registered('customer_id')) {
-            echo '<div class="form-group">'.tep_draw_input_field('billing_email_address', (isset($customerAddress) ? $customerAddress['email_address'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_EMAIL_ADDRESS . '"').'</div>';
+            echo '<div class="form-group check-email">'.tep_draw_input_field('billing_email_address', (isset($customerAddress) ? $customerAddress['email_address'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_EMAIL_ADDRESS . '"').'</div>';
             echo '<div class="form-group" id="email_error" style="color:#DD703E;"></div>';
         }
         ?>

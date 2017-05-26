@@ -1,12 +1,12 @@
 var submitter = null;
-var paymentVals = new Array();   
+var paymentVals = new Array();
 
 function echeck(str) {
 
         var at="@"
         var dot="."
         var lat=str.indexOf(at)
-        var lstr=str.length        
+        var lstr=str.length
         var ldot=str.indexOf(dot)
         if (str.indexOf(at)==-1){
            return false
@@ -31,15 +31,15 @@ function echeck(str) {
          if (str.indexOf(dot,(lat+2))==-1){
             return false
          }
-        
+
          if (str.indexOf(" ")!=-1){
             return false
          }
-     
+
   var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 if (!(filter.test(str))) {return false}
 
-          return true                    
+          return true
     }
 
 function submitFunction() {
@@ -57,9 +57,9 @@ function bindAutoFill($el){
     }else{
         var method = 'blur';
     }
-    
+
     $el.blur(unsetFocus).focus(setFocus);
-    
+
     if (document.attachEvent){
         $el.get(0).attachEvent('onpropertychange', function (){
             if ($(event.srcElement).data('hasFocus') && $(event.srcElement).data('hasFocus') == 'true') return;
@@ -83,7 +83,7 @@ function setFocus(){
 
 function unsetFocus(){
     $(this).data('hasFocus', 'false');
-}   
+}
 
 var checkout = {
     charset: 'utf8',
@@ -101,43 +101,43 @@ var checkout = {
         {
             $('#ajaxMessages').dialog('open');
         }
-        $('#ajaxLoader').show(); 
+        $('#ajaxLoader').show();
     },
     hideAjaxLoader: function (){
         $('#ajaxLoader').hide();
         if(this.showMessagesPopUp == true)
         {
             $('#ajaxMessages').dialog('close');
-        } 
+        }
     },
     showAjaxMessage: function (message){
-       
+
             // $('#checkoutButtonContainer').hide();
-        $('#checkoutButtonContainer').find('.btn').addClass('unactive');   
+        $('#checkoutButtonContainer').find('.btn').addClass('unactive');
 
         $('#ajaxMessages').show().html('<span><img src="/includes/checkout/ajax_load.gif"><br>' + message + '</span>');
-      
+
     },
 	hideAjaxMessage: function (){
 
-	// raid ------ минимальный заказ!!!---------------- //		 
+	// raid ------ минимальный заказ!!!---------------- //
 	if($('#minsum').length) {
 	   $('#minimal_sum').html($('#minsum').val());
        $('#checkoutButtonContainer_minimal').css('display','block');
-   } 
-	// raid ------ минимальный заказ!!!---------------- //	
+   }
+	// raid ------ минимальный заказ!!!---------------- //
    else {
      // $('#checkoutButtonContainer').show();
      $('#checkoutButtonContainer').find('.btn').removeClass('unactive');
      $('#checkoutButtonContainer_minimal').css('display','none');
-   }  
+   }
 	 //$('#checkoutButtonContainer').show();
-	
+
    $('#ajaxMessages').hide();
-		 
+
 	},
     fieldErrorCheck: function ($element, forceCheck, hideIcon){
-        
+
         forceCheck = forceCheck || false;
         hideIcon = hideIcon || false;
         var errMsg = this.checkFieldForErrors($element, forceCheck);
@@ -153,7 +153,7 @@ var checkout = {
                 return true;
             }
         }
-        return false;  
+        return false;
     },
     checkFieldForErrors: function ($element, forceCheck){
         var hasError = false;
@@ -196,17 +196,17 @@ var checkout = {
                 } else
         if (($element.attr('name') == 'billing_email_address') && (!(echeck($element.val())))) {
             hasError = true;
-        
+
         }
-                   
-        
+
+
                 break;
             }
             if (hasError == true){
                 return errCheck.errMsg;
             }
         }
-        return hasError;  
+        return hasError;
     },
     addIcon: function ($curField, iconType, title){
         title = title || false;
@@ -225,19 +225,19 @@ var checkout = {
             case 'required':
             this.addRequiredIcon($curField, 'Required');
             break;
-        }  
+        }
     },
     addSuccessIcon: function ($curField, title){
         if ($('.success_icon', $curField.parent()).length <= 0){
             $curField.parent().append(this.fieldSuccessHTML);
         }
-        $('.success_icon', $curField.parent()).attr('title', title).show();  
+        $('.success_icon', $curField.parent()).attr('title', title).show();
       },
     addErrorIcon: function ($curField, title){
          if ($('.error_icon', $curField.parent()).length <= 0){
             $curField.parent().append(this.fieldErrorHTML);
         }
-        $('.error_icon', $curField.parent()).attr('title', title).show();  
+        $('.error_icon', $curField.parent()).attr('title', title).show();
     },
     addRequiredIcon: function ($curField, title){
         if ($curField.hasClass('required')){
@@ -254,33 +254,33 @@ var checkout = {
             $(':radio[name="' + elementName + '"]:checked').trigger('click', true);
          //   console.log(111);
         }
-      
+
     },
     addRowMethods: function($row){
         var checkoutClass2 = this;
-        $row.click(function (){ 
+        $row.click(function (){
             if (!$(this).hasClass('moduleRowSelected')) {
               // удаляет все классы .moduleRowSelected
               var selector = ($(this).hasClass('shippingRow') ? '.shippingRow' : '.paymentRow') + '.moduleRowSelected';
               $(selector).removeClass('moduleRowSelected');
-              
-              // назначает выбранной строке класс .moduleRowSelected
-              $(this).addClass('moduleRowSelected');         
-			    //    $(':radio', $(this)).click();	
 
-        			/*  ЗАКОМЕНТИРОВАТЬ ЕСЛИ НЕ НУЖЕН ship2pay */	
+              // назначает выбранной строке класс .moduleRowSelected
+              $(this).addClass('moduleRowSelected');
+			    //    $(':radio', $(this)).click();
+
+        			/*  ЗАКОМЕНТИРОВАТЬ ЕСЛИ НЕ НУЖЕН ship2pay */
         			// checkoutClass2.updatePaymentMethods(true);
         	    // checkoutClass2.updateShippingMethods(true);
-			
+
               if($(':radio', $(this)).is(':disabled')!==true)
               if (!$(':radio', $(this)).is(':checked')){
                 $(':radio', $(this)).attr('checked', 'checked').click();
               }
             }
-        });  
-    }, 
+        });
+    },
     queueAjaxRequest: function (options){
-        var checkoutClass = this;  
+        var checkoutClass = this;
         var o = {
             url: options.url,
             cache: options.cache || false,
@@ -296,12 +296,12 @@ var checkout = {
                     checkoutClass.hideAjaxMessage();
                     // raid!!!---------------------------
                     // закоментил и перенес в setCheckoutAddress()
-                    //if(checkoutClass.errors != true) $('#onePageCheckoutForm').submit();     
+                    //if(checkoutClass.errors != true) $('#onePageCheckoutForm').submit();
                     // raid!!!---------------------------
-                    
+
                     if (document.ajaxq.q['orderUpdate'].length <= 0){
                         //alert(checkoutClass.errors);  alert(checkoutClass.checkoutClicked);
-                        if(checkoutClass.errors != true && checkoutClass.checkoutClicked == true){   
+                        if(checkoutClass.errors != true && checkoutClass.checkoutClicked == true){
                             var buttonConfirmOrder = $('.ui-dialog-buttonpane button:first');
                             buttonConfirmOrder.removeClass('ui-state-disabled');
                             $('#imgDlgLgr').hide();
@@ -317,8 +317,8 @@ var checkout = {
                 //alert(textStatus +'\n'+ errorThrown+'\n'+options.data+'\n'+options.url);
            // }
         };
-        $.ajaxq('orderUpdate', o); 
-    },  
+        $.ajaxq('orderUpdate', o);
+    },
 	updateAddressHTML: function (type){
 	 	var checkoutClass = this;
 		this.queueAjaxRequest({
@@ -339,9 +339,9 @@ var checkout = {
 			    }
 			},
 			errorMsg: 'There was an error loading your ' + type + ' address, please inform ' + checkoutClass.storeName + ' about this error.'
-		}); 
+		});
 	},
-	attachAddressFields: function(){ 
+	attachAddressFields: function(){
 		var checkoutClass = this;
 		$('input', $('#billingAddress')).each(function (){
 			if ($(this).attr('name') != undefined && $(this).attr('type') != 'checkbox' && $(this).attr('type') != 'radio'){
@@ -372,7 +372,7 @@ var checkout = {
 					checkoutClass.processBillingAddress();
 				}
 			};
-			
+
 			$(this).unbind('blur');
 			if ($(this).attr('type') == 'select-one'){
 				$(this).change(processFunction);
@@ -395,7 +395,7 @@ var checkout = {
 						checkoutClass.processShippingAddress(true);
 					}
 				};
-			
+
 				$(this).blur(processAddressFunction);
 				bindAutoFill($(this));
 
@@ -418,7 +418,7 @@ var checkout = {
 					fieldType = 'delivery';
 				}
 		//		checkoutClass.addCountryAjax($(this), fieldType + '_state', 'stateCol_' + fieldType);
-	
+
 			});
 
 			$('*[name="billing_state"], *[name="delivery_state"]').each(function (){
@@ -426,7 +426,7 @@ var checkout = {
 				if ($(this).attr('name') == 'delivery_state'){
 					processAddressFunction = checkoutClass.processShippingAddress;
 				}
-				
+
 				var processFunction = function (){
 					if ($(this).hasClass('required')){
 						if (checkoutClass.fieldErrorCheck($(this)) == false){
@@ -436,7 +436,7 @@ var checkout = {
 						processAddressFunction.call(checkoutClass);
 					}
 				}
-			
+
 				if ($(this).attr('type') == 'select-one'){
 					$(this).change(processFunction);
 				}else{
@@ -444,7 +444,7 @@ var checkout = {
 				}
 				bindAutoFill($(this));
 			});
-		}		
+		}
 	},
     updateOrderTotals: function (){
         var checkoutClass = this;
@@ -460,56 +460,56 @@ var checkout = {
                 //checkoutClass.updateRadiosforTotal();
             },
             errorMsg: checkoutClass.error_scart+' ' + checkoutClass.storeName
-        }); 
+        });
     },
     updateModuleMethods: function (action, noOrdertotalUpdate){
-        var checkoutClass = this;    
+        var checkoutClass = this;
         var descText = (action == 'shipping' ? 'Shipping' : 'Payment');
         if (action == 'shipping'){
           var setMethod = checkoutClass.setShippingMethod;
         } else {
           var setMethod = checkoutClass.setPaymentMethod;
-        } 
-                  
-        this.queueAjaxRequest({          
+        }
+
+        this.queueAjaxRequest({
             url: this.pageLinks.checkout,
             data: 'action=update' + descText + 'Methods',
             type: 'post',
             beforeSendMsg: checkoutClass.refresh_method+' ' + descText,
-            success: function (data){  
+            success: function (data){
                 $('#no' + descText + 'Address').hide();
                 $('#' + action + 'Methods').html(data).show();
                 $('.' + action + 'Row').each(function (){
-                
-                  checkoutClass.addRowMethods($(this)); 
 
-                      $('input[name="' + action + '"]', $(this)).each(function (){ 
+                  checkoutClass.addRowMethods($(this));
+
+                      $('input[name="' + action + '"]', $(this)).each(function (){
                           $(this).click(function (e, noOrdertotalUpdate){
                               setMethod.call(checkoutClass, $(this));
                           });
                       });
 
                 });
-                checkoutClass.clickButton(descText.toLowerCase()); 
-              
+                checkoutClass.clickButton(descText.toLowerCase());
 
-                
+
+
 			// raid  - обновляем выпадалку оплаты
 				  $("#current_payment_module [value='"+$("input[name=payment]:checked").val()+"']").attr("selected", "selected");
-			// raid  - обновляем выпадалку оплаты           
-            
-			
+			// raid  - обновляем выпадалку оплаты
+
+
 			// raid  - показуємо додаткові поля в залежності від способів доставки
 			//  console.log($('.shippingRow.moduleRowSelected input[type=radio]').val());
 		/*
     		var curr_sposob = $('.shippingRow.moduleRowSelected input[type=radio]').val();
 			  var suburbblock = $('input[name=billing_suburb]').parent().parent();
 			  var streetblock = $('input[name=billing_street_address]').parent().parent();
-        
+
 			  if(curr_sposob=='flat_flat') { // якщо курєр то адрес
 				  suburbblock.fadeOut(0);
 					streetblock.fadeIn(100);
-				} else if(curr_sposob=='nwpochta_nwpochta'  ) { // якщо НП то       
+				} else if(curr_sposob=='nwpochta_nwpochta'  ) { // якщо НП то
 				  streetblock.fadeOut(0);
 				  suburbblock.fadeIn(100);
 				} else { // якщо курєр то адрес
@@ -522,23 +522,23 @@ var checkout = {
     });
 
 			// raid end
-			
-			      },  
+
+			      },
             errorMsg:  checkoutClass.error_some1+' ' + action + ' '+checkoutClass.error_some2+' ' + checkoutClass.storeName
         });
-    },                               
+    },
     updateShippingMethods: function (noOrdertotalUpdate){
         if (this.shippingEnabled == false){
             return false;
         }
         this.updateModuleMethods('shipping', noOrdertotalUpdate);
-        
+
     },
     updatePaymentMethods: function (noOrdertotalUpdate){
-        this.updateModuleMethods('payment', noOrdertotalUpdate); 
+        this.updateModuleMethods('payment', noOrdertotalUpdate);
     },
     setModuleMethod: function (type, method, successFunction){
-        var checkoutClass = this;  
+        var checkoutClass = this;
         this.queueAjaxRequest({
             url: this.pageLinks.checkout,
             data: 'action=set' + (type == 'shipping' ? 'Shipping' : 'Payment') + 'Method&method=' + method,
@@ -547,13 +547,13 @@ var checkout = {
             dataType: 'json',
             success: successFunction,
             errorMsg: checkoutClass.error_set_some1+' ' + type + ' '+checkoutClass.error_set_some2+' ' + checkoutClass.storeName + ' '+checkoutClass.error_set_some2
-        }); 
+        });
                 // for PHP 5.4 :
           //      if (type == 'shipping') {
           //        checkoutClass.updatePaymentMethods(true);
           //      } else {
-          //        checkoutClass.updateOrderTotals();   
-          //      }  
+          //        checkoutClass.updateOrderTotals();
+          //      }
       },
     setShippingMethod: function ($button){
         if (this.shippingEnabled == false){
@@ -564,17 +564,17 @@ var checkout = {
         this.setModuleMethod('shipping', $button.val(), function (data){
           // for PHP 5.4 :
           checkoutClass.updatePaymentMethods(true);
-        });   
+        });
     },
     setPaymentMethod: function ($button){
-       
+
         var checkoutClass = this;
         this.setModuleMethod('payment', $button.val(), function (data){
                 // for PHP 5.4 :
-                  checkoutClass.updateOrderTotals();   
-          /*  
+                  checkoutClass.updateOrderTotals();
+          /*
             $('.paymentFields').remove();
-       
+
             if (data.inputFields != ''){
                 $(data.inputFields).insertAfter($button.parent().parent());
                 $('input,select,radio','#paymentMethods').each( function ()
@@ -585,27 +585,27 @@ var checkout = {
                     }
                     $(this).blur(function (){
                         paymentVals[$(this).attr('name')] = $(this).val();
-                        
+
                     });
-                }); 
+                });
             }
-         */   
-     
-        });    
+         */
+
+        });
     },
 
-    processBillingAddress: function (skipUpdateTotals){   
+    processBillingAddress: function (skipUpdateTotals){
         var hasError = false;
-        var checkoutClass = this; 
+        var checkoutClass = this;
         $('select[name="billing_country"], input[name="billing_street_address"], input[name="billing_zipcode"], input[name="billing_city"], input[id="checkoutButton"], *[name="billing_state"]', $('#billingAddress')).each(function (){
       if (checkoutClass.fieldErrorCheck($(this), false, true) == true){
                 hasError = true;
-            }   
+            }
         });
-        if (hasError == true){ 
-            return;        
-        }   
-    
+        if (hasError == true){
+            return;
+        }
+
         this.setBillTo();
 
         if(skipUpdateTotals == true)
@@ -614,7 +614,7 @@ var checkout = {
     //        this.updateShippingMethods(true);
     //        this.updateOrderTotals();
         }
-        
+
     },
     processShippingAddress: function (skipUpdateTotals){
         var hasError = false;
@@ -627,7 +627,7 @@ var checkout = {
         if (hasError == true){
             return;
         }
-    
+
         this.setSendTo(true);
         if (this.shippingEnabled == true && skipUpdateTotals != true){
             this.updateShippingMethods(true);
@@ -637,7 +637,7 @@ var checkout = {
     //        this.updatePaymentMethods(true);
     //        this.updateShippingMethods(true);
     //        this.updateOrderTotals();
-        }  
+        }
     },
     setCheckoutAddress: function (type, useShipping){
          var checkoutClass = this;
@@ -669,15 +669,15 @@ var checkout = {
             }
 				//		,
         //    errorMsg: 'There was an error updating your ' + errMsg + ', please inform ' + checkoutClass.storeName + ' about this error.'
-        });  
+        });
     },
     setBillTo: function (){
-        this.setCheckoutAddress('billing', false); 
+        this.setCheckoutAddress('billing', false);
     },
     setSendTo: function (useShipping){
-        this.setCheckoutAddress('shipping', useShipping); 
+        this.setCheckoutAddress('shipping', useShipping);
     },
-     checkAllErrors: function(){  
+     checkAllErrors: function(){
             var checkoutClass = this;
             var errMsg = '';
             if ($('.required_icon:visible', $('#billingAddress')).length > 0){
@@ -758,15 +758,15 @@ var checkout = {
 		            }
                 return true;
             }
-        },                   
-    initCheckout: function (){    
+        },
+    initCheckout: function (){
         var checkoutClass = this;
-        
+
         /*var billingInfoChanged = false;
         if ($('#diffShipping').checked && this.loggedIn != true){
         var shippingInfoChanged = false;
         }*/
-          
+
     	//	$('#diffShipping').click(function (){
     	//		if (this.checked){
     	//			$('#shippingAddress').slideDown();
@@ -783,15 +783,15 @@ var checkout = {
     	//			}
     	//		}
     	//	});
-        
+
         if(this.autoshow == true &&  this.loggedIn == false){
             $('#shippingAddress').hide();
      //       this.setBillTo();
-     //       this.setSendTo(false);     
+     //       this.setSendTo(false);
      //       this.updatePaymentMethods(true);
             this.updateShippingMethods(true);
      //       this.updateOrderTotals();
-            
+
         }else    if (this.loggedIn == false){
             $('#shippingAddress').hide();
             $('#shippingMethods').html('');
@@ -835,8 +835,8 @@ var checkout = {
                 this.clickButton('shipping');
             }
         }
-        
-        
+
+
 
         $('input, password', $('#billingAddress')).each(function (){
             if ($(this).attr('name') != undefined && $(this).attr('type') != 'checkbox' && $(this).attr('type') != 'radio'){
@@ -879,7 +879,7 @@ var checkout = {
             }
         });
 
-        
+
 		$('input[name="billing_email_address"]').each(function (){
 			$(this).unbind('blur').change(function (){
 				var $thisField = $(this);
@@ -899,7 +899,7 @@ var checkout = {
 							data: 'action=checkEmailAddress&emailAddress=' + $thisField.val(),
 							type: 'post',
 							beforeSendMsg: checkoutClass.check_email,
-							dataType: 'json',                            
+							dataType: 'json',
 							success: function (data){
 								$('.success, .error', $thisField.parent()).hide();
 								if (data.success == 'false'){
@@ -920,7 +920,7 @@ var checkout = {
 			});
 			bindAutoFill($(this));
 		});
-		
+
 		$('input,select[name="shipping_country"]', $('#shippingAddress')).each(function (){
 			if ($(this).attr('name') != undefined && $(this).attr('type') != 'checkbox'){
 				var processAddressFunction = function (){
@@ -935,7 +935,7 @@ var checkout = {
 						checkoutClass.processShippingAddress(true);
 					}
 				};
-			
+
 				$(this).blur(processAddressFunction);
 				bindAutoFill($(this));
 
@@ -958,13 +958,13 @@ var checkout = {
 				}
 	//			checkoutClass.addCountryAjax($(this), fieldType + '_state', 'stateCol_' + fieldType);
 			});
-		
+
 			$('*[name="billing_state"], *[name="delivery_state"]').each(function (){
 				var processAddressFunction = checkoutClass.processBillingAddress;
 				if ($(this).attr('name') == 'delivery_state'){
 					processAddressFunction = checkoutClass.processShippingAddress;
 				}
-				
+
 				var processFunction = function (){
 					if ($(this).hasClass('required')){
 						if (checkoutClass.fieldErrorCheck($(this)) == false){
@@ -974,7 +974,7 @@ var checkout = {
 						processAddressFunction.call(checkoutClass);
 					}
 				}
-			
+
 				if ($(this).attr('type') == 'select-one'){
 					$(this).change(processFunction);
 				}else{
@@ -983,10 +983,19 @@ var checkout = {
 				bindAutoFill($(this));
 			});
 		}
-    
-        $('#checkoutButton').click(function() { 
-				  checkoutClass.checkAllErrors();   
-          return false;                                   
+
+        // Accept Rules before send order (enable Checkout Button)
+        $('#checkBtn').click(function () {
+            if($('#checkoutButton').hasClass('disabled')){
+                $('#checkoutButton').removeClass('disabled');
+            } else {
+                $('#checkoutButton').addClass('disabled');
+            }
+        })
+        // Default disable checkout button befor accept rules
+        $('#checkoutButton').click(function() {
+            if(!$(this).hasClass('disabled'))checkoutClass.checkAllErrors();
+          return false;
         });
 
         if (this.loggedIn == true && this.showAddressInFields == true){
@@ -995,8 +1004,8 @@ var checkout = {
         }
 
         this.initializing = false;
-        
-        
+
+
     }
 }
 
