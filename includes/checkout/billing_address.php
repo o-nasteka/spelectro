@@ -24,6 +24,7 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
         if (tep_session_is_registered('onepage')) {
             $billingAddress = $onepage['billing'];
             $customerAddress = $onepage['customer'];
+            $shippingAddress = $onepage['delivery'];
         }
             echo '<div class="check-bl">';
               echo '<div class="form-group check-name">'.
@@ -83,17 +84,17 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
                     <input type="checkbox" name="diffShipping" id="diffShipping" value="1">
                     <label for="diffShipping"><?php echo TEXT_DIFFERENT_SHIPPING; ?></label>
                     <?php
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_nif', (isset($billingAddress) ? $billingAddress['nif'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_NIF . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_nif', (isset($shippingAddress) ? $shippingAddress['nif'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_NIF . '"').'</div>';
 
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_company', (isset($billingAddress) ? $billingAddress['company'] : ''), 'class="checkout_inputs form-control" placeholder="' . ENTRY_COMPANY . '"').'</div>';
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_cif', (isset($billingAddress) ? $billingAddress['cif'] : ''), 'class="checkout_inputs form-control" placeholder="' . ENTRY_CIF . '"').'</div>';
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_street_address', (isset($billingAddress) ? $billingAddress['street_address'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_STREET_ADDRESS . '"').'</div>';
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_zipcode', (isset($billingAddress) ? $billingAddress['postcode'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_POST_CODE . '"').'</div>';
-                    echo '<div class="form-group">'.tep_get_country_list('shipping_country', (isset($billingAddress) && tep_not_null($billingAddress['country_id']) ? $billingAddress['country_id'] : STORE_COUNTRY), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_COUNTRY . '"').'</div>';
-                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,(isset($billingAddress) ? $billingAddress['zone_id'] : ''),false,'shipping_zone_id').'</div>';
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_city', (isset($billingAddress) ? $billingAddress['city'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_CITY . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_company', (isset($shippingAddress) ? $shippingAddress['company'] : ''), 'class="checkout_inputs form-control" placeholder="' . ENTRY_COMPANY . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_cif', (isset($shippingAddress) ? $shippingAddress['cif'] : ''), 'class="checkout_inputs form-control" placeholder="' . ENTRY_CIF . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_street_address', (isset($shippingAddress) ? $shippingAddress['street_address'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_STREET_ADDRESS . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_zipcode', (isset($shippingAddress) ? $shippingAddress['postcode'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_POST_CODE . '"').'</div>';
+                    echo '<div class="form-group">'.tep_get_country_list('shipping_country', (isset($shippingAddress) && tep_not_null($shippingAddress['country_id']) ? $shippingAddress['country_id'] : STORE_COUNTRY), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_COUNTRY . '"').'</div>';
+                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,(isset($shippingAddress) ? $shippingAddress['zone_id'] : ''),false,'shipping_zone_id').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_city', (isset($shippingAddress) ? $shippingAddress['city'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_CITY . '"').'</div>';
                     //echo '<div class="form-group">'.tep_draw_input_field('billing_suburb', (isset($billingAddress) ? $billingAddress['suburb'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_SUBURB . '"').'</div>';
-                    echo '<div class="form-group">'.tep_draw_input_field('shipping_telephone', (isset($customerAddress) ? $customerAddress['telephone'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_TELEPHONE . '"').'</div>';
+                    echo '<div class="form-group">'.tep_draw_input_field('shipping_telephone', (isset($shippingAddress) ? $shippingAddress['telephone'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_TELEPHONE . '"').'</div>';
 
 
                     if(!tep_session_is_registered('customer_id')) {

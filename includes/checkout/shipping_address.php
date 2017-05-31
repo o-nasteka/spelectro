@@ -93,12 +93,12 @@ if(ACCOUNT_POSTCODE == 'True'){
       </div>
 	  </td>
   </tr>
-<?php                                               
+<?php
   }
 ?>
 
 
 </table>
-<?php 
+<?php
 }
 ?></div>

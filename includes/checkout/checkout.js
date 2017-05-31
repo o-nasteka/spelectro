@@ -767,22 +767,22 @@ var checkout = {
         var shippingInfoChanged = false;
         }*/
 
-    	//	$('#diffShipping').click(function (){
-    	//		if (this.checked){
-    	//			$('#shippingAddress').slideDown();
-    	////			$('#shippingMethods').html('');
-    	//			$('#noShippingAddress').show();
-    	//			$('select[name="shipping_country"]').trigger('change');
-    	//		}else{
-    	//			$('#shippingAddress').slideUp();
-    	//			var errCheck = checkoutClass.processShippingAddress();
-    	//			if (errCheck == ''){
-    	//				$('#noShippingAddress').hide();
-    	//			}else{
-    	//				$('#noShippingAddress').show();
-    	//			}
-    	//		}
-    	//	});
+        $('#diffShipping').click(function (){
+            if (this.checked){
+                $('#shippingAddress').slideDown();
+                //			$('#shippingMethods').html('');
+                $('#noShippingAddress').show();
+                $('select[name="shipping_country"]').trigger('change');
+            }else{
+                $('#shippingAddress').slideUp();
+                var errCheck = checkoutClass.processShippingAddress();
+                if (errCheck == ''){
+                    $('#noShippingAddress').hide();
+                }else{
+                    $('#noShippingAddress').show();
+                }
+            }
+        });
 
         if(this.autoshow == true &&  this.loggedIn == false){
             $('#shippingAddress').hide();
