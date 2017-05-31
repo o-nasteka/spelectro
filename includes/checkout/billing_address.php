@@ -16,7 +16,8 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
 //   echo '<input type="hidden" name="billing_telephone" value="'.$address['firstname'].'" />';
         echo '<input type="hidden" name="billing_country" value="' . $address['country_id'] . '" />';
         echo '<input type="hidden" name="billing_nif" value="' . $address['entry_NIF'] . '" />';
-        echo '<input type="hidden" name="billing_city" value="' . $address['city'] . '" />';
+        echo '<input type="hidden" name="billing_city" value="' . $address['city'] . '" />';  
+        echo '<input type="hidden" name="billing_zone_id" value="' . $address['zone_id'] . '" />';        
         echo '<input type="hidden" name="billing_street_address" value="' . $address['street_address'] . '" />';
 
     } else {
@@ -56,7 +57,8 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
                     echo '<div class="form-group">'.tep_draw_input_field('billing_street_address', (isset($billingAddress) ? $billingAddress['street_address'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_STREET_ADDRESS . '"').'</div>';
                     echo '<div class="form-group">'.tep_draw_input_field('billing_zipcode', (isset($billingAddress) ? $billingAddress['postcode'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_POST_CODE . '"').'</div>';
                     echo '<div class="form-group">'.tep_get_country_list('billing_country', (isset($billingAddress) && tep_not_null($billingAddress['country_id']) ? $billingAddress['country_id'] : STORE_COUNTRY), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_COUNTRY . '"').'</div>';
-                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,'',false).'</div>';
+                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,(isset($billingAddress) ? $billingAddress['zone_id'] : ''),false,'billing_zone_id').'</div>';   
+                                    
                     echo '<div class="form-group">'.tep_draw_input_field('billing_city', (isset($billingAddress) ? $billingAddress['city'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_CITY . '"').'</div>';
                     //echo '<div class="form-group">'.tep_draw_input_field('billing_suburb', (isset($billingAddress) ? $billingAddress['suburb'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_SUBURB . '"').'</div>';
                     echo '<div class="form-group">'.tep_draw_input_field('billing_telephone', (isset($customerAddress) ? $customerAddress['telephone'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_TELEPHONE . '"').'</div>';
@@ -88,7 +90,7 @@ if (tep_session_is_registered('customer_id')) echo '<a href="address_book.php" c
                     echo '<div class="form-group">'.tep_draw_input_field('shipping_street_address', (isset($billingAddress) ? $billingAddress['street_address'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_STREET_ADDRESS . '"').'</div>';
                     echo '<div class="form-group">'.tep_draw_input_field('shipping_zipcode', (isset($billingAddress) ? $billingAddress['postcode'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_POST_CODE . '"').'</div>';
                     echo '<div class="form-group">'.tep_get_country_list('shipping_country', (isset($billingAddress) && tep_not_null($billingAddress['country_id']) ? $billingAddress['country_id'] : STORE_COUNTRY), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_COUNTRY . '"').'</div>';
-                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,'',false).'</div>';
+                    echo '<div class="form-group fixed-height">'.ajax_get_zones_html(DEFAULT_COUNTRY,(isset($billingAddress) ? $billingAddress['zone_id'] : ''),false,'shipping_zone_id').'</div>';
                     echo '<div class="form-group">'.tep_draw_input_field('shipping_city', (isset($billingAddress) ? $billingAddress['city'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_CITY . '"').'</div>';
                     //echo '<div class="form-group">'.tep_draw_input_field('billing_suburb', (isset($billingAddress) ? $billingAddress['suburb'] : ''), 'class="required checkout_inputs form-control" placeholder="' . ENTRY_SUBURB . '"').'</div>';
                     echo '<div class="form-group">'.tep_draw_input_field('shipping_telephone', (isset($customerAddress) ? $customerAddress['telephone'] : ''), 'class="checkout_inputs required form-control" placeholder="' . ENTRY_TELEPHONE . '"').'</div>';

@@ -184,7 +184,7 @@ if (MODULE_ORDER_TOTAL_COUPON_STATUS == 'true'){
 
     <!-- END MAIN TABLE -->
     <div class="col-md-6 col-sm-6 col-xs-9 form-inline pull-right text-right">
-      <div id="cart_order_total" class="right">
+      <div id="cart_order_total" class="orderTotals right">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <?php echo $coupon_text; ?>
           <?php echo $order_total_modules->output(); ?>
@@ -212,3 +212,5 @@ if (MODULE_ORDER_TOTAL_COUPON_STATUS == 'true'){
   echo '<div><a href="/" class="btn btn-default">' . IMAGE_BUTTON_CONTINUE . '</a></div>';
 }
 ?>
+
+<!--<div class="orderTotals"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>-->

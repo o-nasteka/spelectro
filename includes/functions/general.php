@@ -384,8 +384,9 @@ function debug($data)
         $zone_id = $customer_zone_id;
       }
     }
-
+                                                                          
 // BOF Separate Pricing Per Customer, specific taxes exempt modification
+ // $tax_query = tep_db_query("select distinct sum(tax_rate) as tax_rate from " . TABLE_TAX_RATES . " tr left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id) left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) where tr.tax_class_id = '" . (int)$class_id . "' " . $additional_for_specific_taxes . " group by tr.tax_priority");
     $tax_query = tep_db_query("select sum(tax_rate) as tax_rate from " . TABLE_TAX_RATES . " tr left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id) left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) where (za.zone_country_id is null or za.zone_country_id = '0' or za.zone_country_id = '" . (int)$country_id . "') and (za.zone_id is null or za.zone_id = '0' or za.zone_id = '" . (int)$zone_id . "') and tr.tax_class_id = '" . (int)$class_id . "' " . $additional_for_specific_taxes . " group by tr.tax_priority");
 // EOF Separate Pricing Per Customer, specific taxes exempt modification
     if (tep_db_num_rows($tax_query)) {
@@ -409,8 +410,9 @@ function debug($data)
      } else {
 	   $additional_for_specific_taxes = '';
      }    
-    
-    $tax_query = tep_db_query("select tax_description from " . TABLE_TAX_RATES . " tr left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id) left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) where (za.zone_country_id is null or za.zone_country_id = '0' or za.zone_country_id = '" . (int)$country_id . "') and (za.zone_id is null or za.zone_id = '0' or za.zone_id = '" . (int)$zone_id . "') and tr.tax_class_id = '" . (int)$class_id . "' " . $additional_for_specific_taxes . " order by tr.tax_priority");
+     
+    $tax_query = tep_db_query("select distinct tax_description from " . TABLE_TAX_RATES . " tr left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id) left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) where tr.tax_class_id = '" . (int)$class_id . "' " . $additional_for_specific_taxes . " order by tr.tax_priority");    
+ //   $tax_query = tep_db_query("select tax_description from " . TABLE_TAX_RATES . " tr left join " . TABLE_ZONES_TO_GEO_ZONES . " za on (tr.tax_zone_id = za.geo_zone_id) left join " . TABLE_GEO_ZONES . " tz on (tz.geo_zone_id = tr.tax_zone_id) where (za.zone_country_id is null or za.zone_country_id = '0' or za.zone_country_id = '" . (int)$country_id . "') and (za.zone_id is null or za.zone_id = '0' or za.zone_id = '" . (int)$zone_id . "') and tr.tax_class_id = '" . (int)$class_id . "' " . $additional_for_specific_taxes . " order by tr.tax_priority");
 // EOF Separate Pricing Per Customer, specific taxes exempt modification
     if (tep_db_num_rows($tax_query)) {   
       $tax_description = '';
@@ -418,7 +420,7 @@ function debug($data)
         $tax_description .= $tax['tax_description'] . ' + ';
       }
       $tax_description = substr($tax_description, 0, -3);
-
+    //  echo '7:'.$tax_description;
       return $tax_description;
     } else {
       return TEXT_UNKNOWN_TAX_RATE;

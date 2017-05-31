@@ -1,5 +1,5 @@
 <?php
-	function ajax_get_zones_html($country, $default_zone = '', $ajax_output = true) {
+	function ajax_get_zones_html($country, $default_zone = '', $ajax_output = true, $field_name = 'zone_id') {
 		$output = '';
 
 		$zones_array = array();    
@@ -10,7 +10,7 @@
 		}
 
 		if ( tep_db_num_rows($zones_query) ) {
-			$output .= tep_draw_pull_down_menu('zone_id', $zones_array, $default_zone);	  
+			$output .= tep_draw_pull_down_menu($field_name, $zones_array, $default_zone);	  
 		} else {
 			$output .= tep_draw_input_field('state', '');
 		}  

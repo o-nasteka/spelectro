@@ -135,6 +135,7 @@
 
         $index++;
       }
+      
     }
 
     function cart() {
@@ -305,12 +306,13 @@
         $valid_products_count = 0;
       }
       //end kgt - discount coupons
-// BOF Separate Pricing Per Customer
+// BOF Separate Pricing Per Customer      
      if(!isset($_SESSION['sppc_customer_group_show_tax'])) {
         $customer_group_show_tax = '1';
      } else {
         $customer_group_show_tax = $_SESSION['sppc_customer_group_show_tax'];
      }
+
 // EOF Separate Pricing Per Customer
       for ($i=0, $n=sizeof($products); $i<$n; $i++) {
         $this->products[$index] = array('qty' => $products[$i]['quantity'],
@@ -364,9 +366,16 @@
           $this->info['subtotal'] += $shown_price;
         }
         //end kgt - discount coupons
-
+        
+        
         $products_tax = $this->products[$index]['tax'];
         $products_tax_description = $this->products[$index]['tax_description'];
+        
+   //  echo '<br> 1:'.$products[$i]['tax_class_id'];
+   //  echo '<br> 2:'.$tax_address['entry_country_id'];
+   //  echo '<br> 3:'.$tax_address['entry_zone_id'];
+   //  echo '<br> 4:'.$this->products[$index]['tax_description'];   
+     
         if ((DISPLAY_PRICE_WITH_TAX == 'true') && ($customer_group_show_tax == '1')) { // SPPC, show_tax modification
           $this->info['tax'] += $shown_price - ($shown_price / (($products_tax < 10) ? "1.0" . str_replace('.', '', $products_tax) : "1." . str_replace('.', '', $products_tax)));
           if (isset($this->info['tax_groups']["$products_tax_description"])) {
@@ -382,9 +391,15 @@
             $this->info['tax_groups']["$products_tax_description"] = ($products_tax / 100) * $shown_price;
           }
         }
+        
+    //  echo 'tax3:';
+    //  print_r($products_tax_description);
+    //  print_r($this->info['tax_groups']);
 
         $index++;
       }
+   //   echo 'tax2:';
+   //   print_r($this->info['tax_groups']);
 
       if ((DISPLAY_PRICE_WITH_TAX == 'true') && ($customer_group_show_tax == '1')) { // SPPC, show_tax modification
         $this->info['total'] = $this->info['subtotal'] + $this->info['shipping_cost'];

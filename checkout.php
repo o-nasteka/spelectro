@@ -1,7 +1,7 @@
 <?php
 /*
   raid
-*/
+*/       
 
   require('includes/application_top.php');
   //require('includes/classes/http_client.php');
@@ -14,7 +14,7 @@
 //	  if (!tep_session_is_registered('customer_id')){
 //		  tep_redirect(tep_href_link(FILENAME_LOGIN));
 //	  }
-//  }
+//  }    
 
   if (isset($_GET['rType'])){
 	  header('content-type: text/html; charset=utf-8');
@@ -40,6 +40,7 @@
   if (!isset($_GET['rType']) && !isset($_GET['action']) && !isset($_POST['action']) && !isset($_GET['error_message']) && !isset($_GET['payment_error'])){
 	  $onePageCheckout->init();
   }
+
   //BOF KGT
   if (MODULE_ORDER_TOTAL_DISCOUNT_COUPON_STATUS == 'true'){
     if(isset($_POST['code']))
@@ -107,7 +108,7 @@
   }
   if (isset($_GET['action']) && $_GET['action']=='process_confirm'){
 	  $action = 'process_confirm';
-  }
+  }  
 
   if (tep_not_null($action)){
 	  ob_start();
@@ -148,7 +149,7 @@
 			  echo $onePageCheckout->setShippingMethod($_POST['method']);
 		  break;
 		  case 'setSendTo':
-		  case 'setBillTo':
+		  case 'setBillTo':    
 			  echo $onePageCheckout->setCheckoutAddress($action);
 		  break;
 		  case 'checkEmailAddress':

@@ -16,12 +16,12 @@
 
               // shipping address
 
-              ob_start();
-              include(DIR_WS_INCLUDES . 'checkout/shipping_address.php');
-              $shippingAddress = ob_get_contents();
-              ob_end_clean();
+            //  ob_start();
+            //  include(DIR_WS_INCLUDES . 'checkout/shipping_address.php');
+            //  $shippingAddress = ob_get_contents();
+            //  ob_end_clean();
 
-              echo $shippingAddress;
+            //  echo $shippingAddress;
 
               ?>
             </div>

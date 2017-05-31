@@ -23,9 +23,10 @@
       $this->output = array();
     }
 
-    function process() {
+    function process() {            
       global $order, $currencies, $languages_id;
       
+    //  print_r($order->info['tax_groups']); 
       reset($order->info['tax_groups']);
       while (list($key, $value) = each($order->info['tax_groups'])) {
         if ($value > 0) {
